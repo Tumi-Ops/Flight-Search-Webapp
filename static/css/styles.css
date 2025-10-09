@@ -1,0 +1,247 @@
+:root {
+    --navy-blue: #001f3f;
+    --navy-light: #003366;
+    --navy-dark: #001829;
+    --navy-accent: #00509e;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 300;
+    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy-blue) 0%, var(--navy-light) 50%, var(--navy-dark) 100%);
+    background-attachment: fixed;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 500px;
+    background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    margin-bottom: -80px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 31, 63, 0.8) 0%, rgba(0, 51, 102, 0.6) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+    padding: 0 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-icon {
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    font-weight: 300;
+}
+
+/* Search Form Card */
+.search-form-card {
+    position: relative;
+    z-index: 20;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    margin-bottom: 4rem;
+    border: none;
+    overflow: hidden;
+}
+
+.card-header-custom {
+    background: linear-gradient(135deg, var(--navy-blue) 0%, var(--navy-light) 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 0;
+}
+
+.card-header-custom h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+/* Form Styling */
+.navy-label {
+    color: var(--navy-blue);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.custom-input {
+    border: 2px solid #e2e8f0;
+    border-color: var(--navy-accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.custom-input:focus {
+    border-color: var(--navy-accent);
+    box-shadow: 0 0 0 3px rgba(0, 80, 158, 0.1);
+    outline: none;
+}
+
+.custom-input:hover {
+    border-color: #cbd5e0;
+    background-color: #f7fafc;
+}
+
+.form-select.custom-input {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23001f3f' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+/* Button */
+.btn-navy {
+    background: linear-gradient(135deg, var(--navy-blue) 0%, var(--navy-light) 100%);
+    border: none;
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-navy:hover {
+    background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy-accent) 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 31, 63, 0.2);
+}
+
+.btn-navy:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0, 31, 63, 0.2);
+}
+
+/* Form text */
+.form-text.text-muted {
+    color: #6b7280 !important;
+    font-size: 0.875rem;
+}
+
+/* Invalid feedback */
+.invalid-feedback {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.is-invalid {
+    border-color: #dc2626 !important;
+}
+
+.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-section {
+        height: 400px;
+        margin-bottom: -60px;
+    }
+
+    .card-body {
+        padding: 1.5rem !important;
+    }
+
+    .card-header-custom {
+        padding: 1.25rem 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-section {
+        height: 350px;
+        margin-bottom: -40px;
+    }
+
+    .container {
+        padding-top: 100px;
+    }
+}
+
+/* Container spacing */
+.container {
+    padding-top: 120px;
+    padding-bottom: 3rem;
+}
+
+/* Ensure proper spacing for form rows */
+.row.mb-4 {
+    margin-bottom: 2rem !important;
+}
+
+/* Improve select dropdown appearance */
+.form-select {
+    cursor: pointer;
+}

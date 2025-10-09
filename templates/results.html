@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% block title %}Flight Results{% endblock %}
+
+{% block content %}
+<div class="container results-container">
+    <!-- Hero Section for Results -->
+    <div class="results-hero text-center mb-5">
+        <div class="hero-icon mb-3">
+            <i class="bi bi-search-heart"></i>
+        </div>
+        <h1 class="hero-title mb-3">Flight Results</h1>
+        <p class="hero-subtitle text-center">We found the best flights for your journey</p>
+    </div>
+
+    {% if details %}
+    <!-- Search Summary -->
+    <div class="search-summary-card mb-5">
+        <div class="card-header-custom">
+            <h3 class="mb-0">
+                <i class="bi bi-info-circle me-2"></i>
+                Your Search Details
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="search-detail-item">
+                        <i class="bi bi-geo-alt me-2"></i>
+                        <strong>Route:</strong> {{ details.origin }} - {{ details.destination }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="search-detail-item">
+                        <i class="bi bi-calendar-event me-2"></i>
+                        <strong>Dates:</strong> {{ details.departure_date }} - {{ details.return_date }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if structured_flights %}
+    <!-- Flight Results -->
+    <div class="flight-results-section">
+        {% for flight in structured_flights %}
+        <div class="flight-result-card mb-4">
+            <!-- Flight Header with Price -->
+            <div class="flight-header">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <div class="airline-info">
+                            <h4 class="airline-name mb-1">{{ flight.airline }}</h4>
+                            <p class="flight-class mb-1">Travel Class: {{ flight.travel_class }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <div class="flight-price">
+                            <span class="price-amount">R{{ "{:,}".format(flight.price) }}</span>
+                            <span class="price-label">Total Price</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flight Details -->
+            <div class="flight-details-content">
+                <!-- Outbound Flight -->
+                <div class="flight-segment mb-4">
+                    <div class="segment-header">
+                        <i class="bi bi-airplane-engines me-2"></i>
+                        <h5 class="segment-title">Outbound Flight</h5>
+                        <span class="segment-date">{{ flight.outbound.departure_date }}</span>
+                    </div>
+
+                    <div class="segment-details">
+                        <div class="route-info">
+                            <div class="route-main">
+                                <span class="departure-code">{{ flight.outbound.departure_airport }}</span>
+                                <i class="bi bi-arrow-right mx-3"></i>
+                                <span class="arrival-code">{{ flight.outbound.arrival_airport }}</span>
+                            </div>
+                            <div class="route-times">
+                                <span class="time-block">
+                                    <strong>{{ flight.outbound.departure_time_only }}</strong>
+                                    <small>Departure</small>
+                                </span>
+                                <span class="duration-block">
+                                    <i class="bi bi-clock"></i>
+                                    {{ flight.outbound.duration }}
+                                </span>
+                                <span class="time-block">
+                                    <strong>{{ flight.outbound.arrival_time_only }}</strong>
+                                    <small>Arrival</small>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="flight-meta">
+                            <div class="meta-item">
+                                <i class="bi bi-ticket-detailed"></i>
+                                <span>Flight: {{ flight.outbound.flight_number }}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="bi bi-airplane"></i>
+                                <span>Aircraft: {{ flight.aircraft }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Return Flight -->
+                <div class="flight-segment mb-4">
+                    <div class="segment-header">
+                        <i class="bi bi-airplane me-2"></i>
+                        <h5 class="segment-title">Return Flight</h5>
+                        <span class="segment-date">{{ flight.return_flight.departure_date }}</span>
+                    </div>
+
+                    <div class="segment-details">
+                        <div class="route-info">
+                            <div class="route-main">
+                                <span class="departure-code">{{ flight.return_flight.departure_airport }}</span>
+                                <i class="bi bi-arrow-right mx-3"></i>
+                                <span class="arrival-code">{{ flight.return_flight.arrival_airport }}</span>
+                            </div>
+                            <div class="route-times">
+                                <span class="time-block">
+                                    <strong>{{ flight.return_flight.departure_time_only }}</strong>
+                                    <small>Departure</small>
+                                </span>
+                                <span class="duration-block">
+                                    <i class="bi bi-clock"></i>
+                                    {{ flight.return_flight.duration }}
+                                </span>
+                                <span class="time-block">
+                                    <strong>{{ flight.return_flight.arrival_time_only }}</strong>
+                                    <small>Arrival</small>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="flight-meta">
+                            <div class="meta-item">
+                                <i class="bi bi-ticket-detailed"></i>
+                                <span>Flight: {{ flight.return_flight.flight_number }}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="bi bi-airplane"></i>
+                                <span>Aircraft: {{ flight.aircraft }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- New Search Button -->
+    <div class="text-center mt-5">
+        <a href="{{ url_for('home') }}" class="btn btn-navy btn-lg">
+            <i class="bi bi-search me-2"></i>
+            New Search
+        </a>
+    </div>
+
+    {% else %}
+    <!-- No Results Found -->
+    <div class="no-results-card text-center">
+        <div class="no-results-icon mb-4">
+            <i class="bi bi-airplane-slash"></i>
+        </div>
+        <h3 class="no-results-title mb-3">No Flights Found</h3>
+        <p class="no-results-text mb-4">We couldn't find any flights matching your search criteria. Please try different
+            dates or destinations.</p>
+        <a href="{{ url_for('home') }}" class="btn btn-navy btn-lg">
+            <i class="bi bi-arrow-left me-2"></i>
+            Search Again
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

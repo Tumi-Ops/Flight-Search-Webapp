@@ -1,0 +1,5 @@
+Flask==3.0.0
+Bootstrap-Flask==2.5.0
+WTForms==3.2.1
+requests==2.32.3
+python-dotenv==1.1.0
