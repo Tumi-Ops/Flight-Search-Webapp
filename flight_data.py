@@ -1,4 +1,4 @@
-# Utilized Gen A.I to upack and structure the json data in this class.
+# Utilized Gen A.I. to upack and structure the json data in this class.
 class FlightData:
     def __init__(self, dm_data, search_flight_data):
         self.flight_data = search_flight_data.flight_data
@@ -24,7 +24,7 @@ class FlightData:
                         self.itineraries.append(offer['itineraries'])
 
                         # Create structured data for HTML template
-                        self._create_structured_data(offer, flight_response)
+                        self.create_structured_data(offer, flight_response)
 
                     except (IndexError, KeyError) as e:
                         print(f"Error extracting flight data: {e}")
@@ -38,9 +38,9 @@ class FlightData:
             self.flight_offers.append("No flight data available")
 
         # Formatting the offers into messages to send
-        self._create_messages(flight_response)
+        self.create_messages(flight_response)
 
-    def _create_structured_data(self, offer, flight_response):
+    def create_structured_data(self, offer, flight_response):
         """Create structured data for easy HTML template usage"""
         outbound_itinerary = offer['itineraries'][0]
         return_itinerary = offer['itineraries'][1]
@@ -96,7 +96,7 @@ class FlightData:
 
         self.structured_flights.append(flight_info)
 
-    def _create_messages(self, flight_response):
+    def create_messages(self, flight_response):
         """Create formatted messages"""
         for x in range(len(self.itineraries)):
             # Two itineraries: outbound and return

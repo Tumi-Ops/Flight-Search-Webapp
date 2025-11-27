@@ -1,0 +1,71 @@
+.pricing-header {
+    color: white;
+    padding: 1.5rem 2rem;
+}
+
+.pricing-container {
+    padding-top: 2px;
+    padding-bottom: 3rem;
+}
+
+.pricing-hero {
+    padding-top: 120px;
+}
+
+.pricing-title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    animation: fadeDown 1s ease forwards;
+}
+
+.pricing-hero-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    font-weight: 300;
+    animation: slideIn 1.1s ease forwards;
+}
+
+.pricing-hero-subtitle-1 {
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    font-weight: 300;
+    animation: slideIn 1.1s ease forwards;
+}
+
+.flight-pricing-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 31, 63, 0.15);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e2e8f0;
+    animation: slideFade 1s ease forwards;
+}
+
+.flight-pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 31, 63, 0.2);
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-15px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideFade {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}

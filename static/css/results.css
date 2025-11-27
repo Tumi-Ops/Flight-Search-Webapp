@@ -1,5 +1,5 @@
 .results-container {
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 3rem;
 }
 
@@ -13,12 +13,20 @@
     color: var(--navy-blue);
 }
 
+.results-hero-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    font-weight: 300;
+}
+
 /* Search Summary */
 .search-summary-card {
     background: white;
     border-radius: 1rem;
     box-shadow: 0 4px 6px rgba(0, 31, 63, 0.1);
     overflow: hidden;
+    animation: slideFade 1s ease forwards;
 }
 
 .search-detail-item {
@@ -43,6 +51,7 @@
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #e2e8f0;
+    animation: slideFade 1s ease forwards;
 }
 
 .flight-result-card:hover {
@@ -54,6 +63,7 @@
     background: linear-gradient(135deg, var(--navy-blue) 0%, var(--navy-light) 100%);
     color: white;
     padding: 1.5rem 2rem;
+    animation: slideFade 1s ease forwards;
 }
 
 .airline-name {
@@ -186,6 +196,7 @@
     padding: 4rem 2rem;
     box-shadow: 0 4px 6px rgba(0, 31, 63, 0.1);
     margin: 2rem 0;
+    animation: slideFade 1s ease forwards;
 }
 
 .no-results-icon {
@@ -196,6 +207,7 @@
 .no-results-title {
     color: var(--navy-blue);
     font-weight: 600;
+    animation: slideFade 1s ease slideIn;
 }
 
 .no-results-text {

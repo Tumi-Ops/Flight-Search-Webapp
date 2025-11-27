@@ -1,20 +1,6 @@
 # This class is responsible for retrieving the IATA codes.
-import os
+import amadeus
 import requests
-from dotenv import load_dotenv
-
-load_dotenv()
-
-amadeus_apikey = os.environ["AMS_API_KEY"]
-amadeus_api_secret = os.environ["AMS_API_SECRET"]
-amadeus_token_endpoint = os.environ["AMADEUS_TOKEN_ENDPOINT"]
-amadeus_token_params = {
-    "grant_type": "client_credentials",
-    "client_id": amadeus_apikey,
-    "client_secret": amadeus_api_secret
-}
-amadeus_cities_endpoint = os.environ["AMADEUS_CITIES_ENDPOINT"]
-
 
 class DataManager:
     def __init__(self):
@@ -25,7 +11,8 @@ class DataManager:
     def get_iata_codes(self, city, og_loc):
         """Gets the cities IATA codes from the Amadeus API"""
         locations = {"from":og_loc, "to": city}
-        self.ama_auth = requests.post(url=amadeus_token_endpoint, data=amadeus_token_params)
+        #Authenticing with the Amadeus
+        self.ama_auth = requests.post(url=amadeus.amadeus_token_endpoint, data=amadeus.amadeus_token_params)
         amadeus_cities_header = {
             "accept": "application/vnd.amadeus+json",
             "Authorization": f"{self.ama_auth.json()['token_type']} {self.ama_auth.json()['access_token']}"
@@ -34,7 +21,7 @@ class DataManager:
         # Adding the found IATA codes to a list
         for x in locations:
             amadeus_cities_params = {"keyword": locations[x], "max": 1, "include": "AIRPORTS"}
-            self.ama_response = requests.get(url=amadeus_cities_endpoint, params=amadeus_cities_params,
+            self.ama_response = requests.get(url=amadeus.amadeus_cities_endpoint, params=amadeus_cities_params,
                                              headers=amadeus_cities_header)
             try:
                 self.iata_codes.append({x: self.ama_response.json()['data'][0]['iataCode']})

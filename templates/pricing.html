@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include "header.html" %}
+
+<div class="pricing-header text-center pricing-hero">
+    <h1 class="pricing-title">Pricing</h1>
+    <p class="pricing-hero-subtitle">
+        Choose a plan that works best for your needs.
+    </p>
+</div>
+
+<main class="container pricing-container">
+
+    <div class="row row-cols-1 row-cols-md-3 mb-5 text-center">
+
+        <!-- Free Plan -->
+        <div class="col mb-4 slide-in">
+            <div class="flight-pricing-card p-0 h-100">
+                <div class="flight-header">
+                    <h4 class="my-0 fw-normal">Free</h4>
+                </div>
+                <div class="p-4">
+                    <h1 class="card-title">$0 <small class="fw-light">/mo</small></h1>
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Must log in to search & set flight alert</li>
+                        <li>5 searches a day</li>
+                        <li>1 Available Flights Alerts</li>
+                        <li>Email support</li>
+                        <li>Help center access</li>
+                    </ul>
+
+                    <button class="btn btn-outline-primary w-100">Sign Up</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="col mb-4">
+            <div class="flight-pricing-card p-0 h-100">
+                <div class="flight-header">
+                    <h4 class="my-0 fw-normal">Gold</h4>
+                </div>
+                <div class="p-4">
+                    <h1 class="card-title">$15 <small class="fw-light">/mo</small></h1>
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Must log in to search & set flight alert</li>
+                        <li>20 searches a day</li>
+                        <li>5 Available Flights Alerts</li>
+                        <li>Priority email support</li>
+                        <li>Help center access</li>
+                    </ul>
+
+                    <button class="btn btn-primary w-100">Get Started</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="col mb-4">
+            <div class="flight-pricing-card border-primary p-0 h-100">
+                <div class="flight-header" style="background: var(--navy-blue);">
+                    <h4 class="my-0 fw-normal">Premium</h4>
+                </div>
+                <div class="p-4">
+                    <h1 class="card-title">$29 <small class="fw-light">/mo</small></h1>
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Must log in to search & set flight alert</li>
+                        <li>Unlimited searches a day</li>
+                        <li>Unlimited Available Flights Alerts</li>
+                        <li>Real-time Phone + email support</li>
+                        <li>Help center access</li>
+                    </ul>
+
+                    <button class="btn btn-primary w-100">Contact Us</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Compare Plans Table -->
+    <h1 class="pricing-hero-subtitle-1 text-center mb-4">Compare Plans</h1>
+    <hr>
+    <div class="table-responsive search-summary-card p-3">
+        <table class="table text-center">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Free</th>
+                <th>Gold</th>
+                <th>Premium</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" class="text-start">Compulsory Sign in</th>
+                <td>✔</td>
+                <td>✔</td>
+                <td>✔</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-start">Help Center Access</th>
+                <td>✔</td>
+                <td>✔</td>
+                <td>✔</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-start">Extra security</th>
+                <td></td>
+                <td>✔</td>
+                <td>✔</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-start">Unlimited Flight Alerts</th>
+                <td></td>
+                <td></td>
+                <td>✔</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-start">Unlimited Flight Searches</th>
+                <td></td>
+                <td></td>
+                <td>✔</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-start">Real-time support</th>
+                <td></td>
+                <td></td>
+                <td>✔</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+{% include "footer.html" %}
+{% endblock %}

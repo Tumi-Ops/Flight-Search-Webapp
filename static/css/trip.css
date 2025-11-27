@@ -1,0 +1,125 @@
+.trip-hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 120px
+}
+
+.trip-hero-section {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.trip-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+}
+
+.trip-nav-link {
+    color: white !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+    background-color: none;
+}
+
+.trip-nav-link:hover {
+    background: var(--navy-blue);
+}
+
+.trip-nav-link.active {
+    background: var(--navy-blue);
+    text-decoration: none;
+}
+
+.trip-nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 190px;            /* space between buttons */
+    border-bottom: none; /* optional: remove bootstrap underline */
+}
+
+.trip-nav-tabs .trip-nav-link {
+    padding: 12px 28px;  /* makes buttons bigger */
+    font-size: 1.1rem;   /* slightly larger text */
+    border-radius: 8px;  /* nicer rounded look */
+}
+
+.trip-form-card {
+    position: relative;
+    z-index: 20;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: none;
+    overflow: hidden;
+    animation: slideFade 1s ease forwards;
+}
+
+.trip-card-header-custom {
+    background: linear-gradient(135deg, var(--navy-blue) 0%, var(--navy-light) 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 0;
+}
+
+.trip-tab-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.trip-custom-tabs {
+    display: flex;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border: 1px solid #dee2e6;
+    margin-bottom: 0;
+}
+
+.trip-custom-tabs .nav-link {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--navy-blue);
+    background: #f8f9fa;
+    border: none;
+    transition: all 0.2s;
+    border-right: 1px solid #dee2e6;
+}
+
+.trip-custom-tabs .nav-link:last-child {
+    border-right: none;
+}
+
+.trip-custom-tabs .nav-link.active {
+    background: var(--navy-accent);
+    color: white;
+}
+
+.trip-custom-tabs .nav-link:hover {
+    background: rgba(0, 80, 158, 0.1);
+}
+
+.trip-custom-tab-content {
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    background: white;
+    padding: 1.5rem;
+}

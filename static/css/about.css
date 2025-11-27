@@ -1,0 +1,149 @@
+:root {
+    --navy-blue: #001f3f;
+    --navy-accent: #003f7f;
+    --soft-white: #f8fafc;
+    --glow: rgba(0, 80, 158, 0.35);
+}
+
+/* ========================= */
+/* HERO SECTION */
+/* ========================= */
+.about-hero {
+    padding: 2rem 1rem 1rem;
+    text-align: center;
+    background: transparent;
+    animation: fadeDown 1s ease forwards;
+    padding-top: 120px;
+}
+
+.about-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    animation: slideIn 1.1s ease forwards;
+}
+
+.about-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    font-weight: 300;
+    animation: slideFade 1.1s ease forwards;
+}
+
+/* ========================= */
+/* CONTENT CARD */
+/* ========================= */
+.content-card {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #ffffff, #f4f7fb);
+    padding: 2.5rem;
+    border-radius: 1.3rem;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    position: relative;
+    overflow: hidden;
+    animation: slideFade 1s ease forwards;
+}
+
+/* Glow border */
+.content-card::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 1.4rem;
+    background: linear-gradient(135deg, var(--navy-accent), transparent 70%);
+    opacity: 0.25;
+    z-index: -1;
+}
+
+.content-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* ========================= */
+/* TEXT HEADINGS */
+/* ========================= */
+.section-title {
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: var(--navy-blue);
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-left: 0.6rem;
+    animation: slideIn 0.7s ease forwards;
+}
+
+.section-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 70%;
+    background: var(--navy-accent);
+    border-radius: 3px;
+    box-shadow: 0 0 10px var(--glow);
+}
+
+/* ========================= */
+/* VALUE BOXES */
+/* ========================= */
+.values-box {
+    background: #ffffff;
+    border-left: 5px solid var(--navy-accent);
+    padding: 1.2rem 1.5rem;
+    font-size: 1.05rem;
+    border-radius: 0.8rem;
+    margin-bottom: 1.3rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.values-box:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-left-width: 8px;
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-15px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideFade {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================= */
+/* MOBILE OPTIMIZATION */
+/* ========================= */
+@media (max-width: 576px) {
+    .about-title { font-size: 2.2rem; }
+    .about-subtitle { font-size: 1rem; }
+    .content-card { padding: 1.7rem; }
+}

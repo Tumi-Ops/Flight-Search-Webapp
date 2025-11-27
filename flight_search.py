@@ -1,17 +1,6 @@
 # This class is responsible for talking to the Flight Search API.
-import os
 import requests
-
-amadeus_apikey = os.environ["AMS_API_KEY"]
-amadeus_api_secret = os.environ["AMS_API_SECRET"]
-amadeus_token_endpoint = os.environ["AMADEUS_TOKEN_ENDPOINT"]
-amadeus_token_params = {
-    "grant_type": "client_credentials",
-    "client_id": amadeus_apikey,
-    "client_secret": amadeus_api_secret
-}
-amadeus_endpoint = os.environ["AMADEUS_FLIGHT_OFFERS"]
-
+import amadeus
 
 class FlightSearch:
     def __init__(self, dm_data):
@@ -22,7 +11,7 @@ class FlightSearch:
         self.dm_codes = dm_data.iata_codes
 
     def get_flights(self, ad, child, inf, tc, dep_date, ret_date):
-        self.ama_auth = requests.post(url=amadeus_token_endpoint, data=amadeus_token_params)
+        self.ama_auth = requests.post(url=amadeus.amadeus_token_endpoint, data=amadeus.amadeus_token_params)
         amadeus_header = {
             "accept": "application/vnd.amadeus+json",
             "Authorization": f"{self.ama_auth.json()['token_type']} {self.ama_auth.json()['access_token']}"
@@ -40,11 +29,11 @@ class FlightSearch:
             "currencyCode": "ZAR",
             "nonStop": "true"
         }
-        self.response = requests.get(url=amadeus_endpoint, params=amadeus_params, headers=amadeus_header)
+        self.response = requests.get(url=amadeus.amadeus_endpoint, params=amadeus_params, headers=amadeus_header)
         try:
             if self.response.status_code == 400:
                 amadeus_params["nonStop"] = "false"
-                self.layover_response = requests.get(url=amadeus_endpoint, params=amadeus_params,
+                self.layover_response = requests.get(url=amadeus.amadeus_endpoint, params=amadeus_params,
                                                      headers=amadeus_header)
                 if self.layover_response.status_code == 400:
                     self.flight_data.append("Error: This resource does not exist. Skipping this request.")
@@ -56,7 +45,7 @@ class FlightSearch:
         except Exception as e:
             self.flight_data.append("Error Found, try again later. ")
             print(f"An unexpected error occurred: {e}")
-
+        print(self.flight_data)
         # print(self.response.json())
         # self.flight_data = [{'meta': {'count': 1, 'links': {
         #     'self': 'https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=NYC&destinationLocationCode=PAR&departureDate=2025-10-02&returnDate=2025-10-04&adults=1&max=1&currencyCode=ZAR&nonStop=true'}},

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="header-container">
+    <header class="navbar-custom d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
+        <div class="col-md-3 mb-2 mb-md-0">
+            <a href="/" class="navbar-brand d-inline-flex align-items-center text-decoration-none">
+                <div class="header-hero-icon">
+                    <i class="bi bi-airplane"></i>
+                </div>
+                FlightSyte
+            </a>
+        </div>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{{ url_for('home') }}"
+                   class="nav-link px-2 {% if active_page=='home' %}active{% endif %}">Home</a>
+            </li>
+            <li><a href="{{ url_for('trip_alert') }}" class="nav-link px-2 {% if active_page=='trip_alert' %}active{% endif %}">Trip
+                Alert</a>
+            </li>
+            <li><a href="{{ url_for('pricing') }}"
+                   class="nav-link px-2 {% if active_page=='pricing' %}active{% endif %}">Pricing</a>
+            </li>
+            <li><a href="{{ url_for('faq') }}"
+                   class="nav-link px-2 {% if active_page=='faq' %}active{% endif %}">FAQs</a>
+            </li>
+            <li><a href="{{ url_for('about') }}"
+                   class="nav-link px-2 {% if active_page=='about' %}active{% endif %}">About</a></li>
+        </ul>
+
+        <div class="col-md-3 text-end">
+            {% if user: %}
+            <a href="{{ url_for('logout') }}">
+                <button type="button" class="btn btn-outline-primary me-2">Logout</button>
+            </a>
+            {% else: %}
+            <a href="{{ url_for('login') }}">
+                <button type="button" class="btn btn-primary me-2">Login</button>
+            </a>
+            {% endif %}
+        </div>
+    </header>
+</div>
+{% endblock %}

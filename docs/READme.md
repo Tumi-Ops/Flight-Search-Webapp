@@ -1,17 +1,22 @@
 # Flight Search Web Application
 
-A Flask-based flight search web application that allows users to search for the cheapest flight deals using the Amadeus API. 
-Users can select travel class, specify passengers, and view formatted flight results.
+A Flask-based flight search web application that allows users to search for the cheapest flight deals using the Amadeus API
+& set trip alerts that will notify users when a flight is available at a set price. 
+
 
 ## Features
 
 - Search for flights by destination and origin cities.
-- Specify number of passengers i.e. adults, children, infants.
-- Select travel class (Economy, Premium Economy, Business, First)
-- Choose departure and return dates
-- View flight results with pricing and details
-- Communication with Amadeus Flight Offers API
-- Built with Flask, Bootstrap 5, Jinja2 templates, Flask-WTF, WTForms, Flask sessions, CSRF protection
+- Set a trip alert that notifies users when flights are available (To be completed...).
+- Specify flight details i.e. number of passengers, travel class, travel dates etc.
+- View flight results with pricing and details.
+- Communication with Amadeus Flight Offers API.
+- Built with Flask, Bootstrap 5, Jinja2 templates, Flask-WTF, WTForms, Flask sessions, CSRF protection.
+- Integrated with AWS services.
+- AWS Cognito for authentication.
+- AWS DynamoDB for saving flight details.
+- AWS Lambda for executing flight search functions.
+- AWS SNS for notifications by email.
 
 ## Requirements
 

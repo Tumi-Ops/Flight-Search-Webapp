@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
-{% block title %}Flight Results{% endblock %}
 
 {% block content %}
+{% include "header.html" %}
 <div class="container results-container">
     <!-- Hero Section for Results -->
-    <div class="results-hero text-center mb-5">
+    <div class="results-hero text-center">
         <div class="hero-icon mb-3">
             <i class="bi bi-search-heart"></i>
         </div>
         <h1 class="hero-title mb-3">Flight Results</h1>
-        <p class="hero-subtitle text-center">We found the best flights for your journey</p>
+        <p class="results-hero-subtitle text-center">We found the best flights for your journey</p>
     </div>
 
     {% if details %}
@@ -51,7 +51,9 @@
                     <div class="col-md-8">
                         <div class="airline-info">
                             <h4 class="airline-name mb-1">{{ flight.airline }}</h4>
-                            <p class="flight-class mb-1">Travel Class: {{ flight.travel_class }}</p>
+                            <p class="flight-class mb-1">Visit their site to book:
+                                <a href="https://www.google.com/search?q={{ flight.airline }}">{{ flight.airline }}</a>
+                            </p>
                         </div>
                     </div>
                     <div class="col-md-4 text-md-end">
@@ -181,4 +183,5 @@
     </div>
     {% endif %}
 </div>
+{% include "footer.html" %}
 {% endblock %}

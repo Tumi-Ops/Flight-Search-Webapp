@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "header.html" %}
+
+<!-- HERO SECTION -->
+<div class="faq-hero">
+    <div class="faq-hero-overlay"></div>
+    <div class="faq-hero-content text-center">
+        <h1 class="faq-title">FlightSyte FAQ</h1>
+        <p class="faq-hero-subtitle">Your questions answered — everything you need to know.</p>
+    </div>
+</div>
+
+<!-- FAQ CONTENT -->
+<div class="container">
+    <div class="accordion faq-accordion" id="faqAccordion">
+        <!-- What is FlightSyte -->
+        <div class="accordion-item faq-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed faq-question"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    <i class="bi bi-airplane me-2"></i>What is FlightSyte?
+                </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body faq-answer">
+                    FlightSyte helps you find the best and cheapest flights available.
+                    Simply enter your travel details and we’ll show the cheapest option available.
+                </div>
+            </div>
+        </div>
+
+        <!-- How does search work -->
+        <div class="accordion-item faq-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed faq-question"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    <i class="bi bi-search-heart me-2"></i>How does the flight search work?
+                </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body faq-answer">
+                    Enter your origin, destination, dates and passenger details.
+                    FlightSyte will search through multiple airline sources
+                    and show you structured the cheapest flight option with their pricing and durations.
+                </div>
+            </div>
+        </div>
+
+        <!-- Bookings & alerts -->
+        <div class="accordion-item faq-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed faq-question"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    <i class="bi bi-bell me-2"></i>Can I save trips and get price alerts?
+                </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body faq-answer">
+                    Yes! Soon you will be able to save planned routes (e.g.
+                    <strong>Johannesburg → Rome</strong>) and set a minimum price!
+                    When a matching cheap flight appears,
+                    <strong>FlightSyte notifies you instantly through email.</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Is FlightSyte free -->
+        <div class="accordion-item faq-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed faq-question"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    <i class="bi bi-cash-coin me-2"></i>Is FlightSyte free to use?
+                </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body faq-answer">
+                    Yes, FlightSyte is completely free to use for flight search and results. However, other features
+                    and the usage quantity will be limited unless you choose a paid subscription. *See Pricing*
+                </div>
+            </div>
+        </div>
+
+        <!-- Where does data come from -->
+        <div class="accordion-item faq-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed faq-question"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                    <i class="bi bi-globe2 me-2"></i>Where do the flight results come from?
+                </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body faq-answer">
+                    FlightSyte aggregates live flight information from multiple airline APIs
+                    and travel providers, giving you real-time availability and the best prices.
+                </div>
+            </div>
+        </div>
+
+        <!-- Do I book directly -->
+        <div class="accordion-item faq-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed faq-question"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                    <i class="bi bi-ticket-detailed me-2"></i>Can I book flights on FlightSyte?
+                </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body faq-answer">
+                    Not yet — we’ll redirect you to the airline’s official website
+                    or booking partner to finalize your purchase.
+                </div>
+            </div>
+        </div>
+
+        <!-- Security -->
+        <div class="accordion-item faq-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed faq-question"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                    <i class="bi bi-shield-check me-2"></i>Is my information secure?
+                </button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body faq-answer">
+                    Absolutely. FlightSyte uses secure HTTPS connections and
+                    handles authentication through Amazon Web Services.
+                    No sensitive information is stored on our servers.
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="accordion-item faq-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed faq-question"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                    <i class="bi bi-envelope-paper-heart me-2"></i>How do I contact support?
+                </button>
+            </h2>
+            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body faq-answer">
+                    You can reach us through our email:
+                    <strong>support@flightsyte.com</strong>.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% include "footer.html" %}
+{% endblock %}

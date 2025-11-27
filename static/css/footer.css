@@ -1,0 +1,43 @@
+/* Dark footer */
+.footer-dark {
+    background-color: #111;
+    border-top: 1px solid #333;
+    color: #ccc;
+
+}
+
+/* Icon & text styling */
+.footer-text {
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.footer-icon-link {
+    color: #bbb;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.4rem;
+}
+
+/* Hover animation */
+.footer-icon-link:hover {
+    color: #0d6efd;
+    transform: translateY(-3px);
+}
+
+/* Fade-in animation on load */
+.footer-dark {
+    animation: fadeInFooter 0.6s ease-in-out;
+}
+
+@keyframes fadeInFooter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

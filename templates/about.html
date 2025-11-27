@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include "header.html" %}
+<div class="about-hero">
+    <div class="about-hero-overlay"></div>
+    <div class="about-hero-content text-center">
+        <h1 class="about-title">About FlightSyte</h1>
+        <p class="about-subtitle">Built with passion. Powered by innovation.</p>
+    </div>
+</div>
+
+<div class="content-card">
+    <h2 class="section-title">Who We Are</h2>
+    <p>
+        We are a passionate team dedicated to creating powerful tools that make flight discovery fast,
+        intuitive, cheap and accessible. Our goal is to simplify travel search and bring clarity to complex data.
+    </p>
+
+    <h2 class="section-title mt-5">Our Mission</h2>
+    <p>
+        To provide travelers with modern tools, real‑time insights, beautifully structured information
+        that make every search effortless and ofcourse, help you find the cheapest flight possible.
+    </p>
+
+    <h2 class="section-title mt-5">Our Values</h2>
+    <ul>
+        <li><strong>Innovate with Modern Technology:</strong> We employ cutting-edge cloud platforms and industry-standard software techniques.</li>
+        <li><strong>Guarantee Reliability:</strong> We build for consistency, availability and integrity, by leveraging the power of AWS.</li>
+        <li><strong>Design for the User:</strong> We craft experiences focused on clarity, simplicity, and real-world utility.</li>
+    </ul>
+</div>
+{% include "footer.html" %}
+{% endblock %}
