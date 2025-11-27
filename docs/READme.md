@@ -3,7 +3,6 @@
 A Flask-based flight search web application that allows users to search for the cheapest flight deals using the Amadeus API
 & set trip alerts that will notify users when a flight is available at a set price. 
 
-
 ## Features
 
 - Search for flights by destination and origin cities.
@@ -15,8 +14,8 @@ A Flask-based flight search web application that allows users to search for the 
 - Integrated with AWS services.
 - AWS Cognito for authentication.
 - AWS DynamoDB for saving flight details.
-- AWS Lambda for executing flight search functions.
-- AWS SNS for notifications by email.
+- AWS Lambda for executing flight search functions (To be completed...).
+- AWS SNS for notifications by email (To be completed...).
 
 ## Requirements
 
@@ -35,7 +34,7 @@ A Flask-based flight search web application that allows users to search for the 
     ```bash
     pip install -r requirements.txt
    ```
-   
+ 
 3. Open the .env file and add your Amadeus API credentials after getting your keys here: https://developers.amadeus.com/self-service/apis-docs/guides/developer-guides/quick-start/:
    - Getting Amadeus API Credentials:
      - Go to Amadeus for Developers
@@ -43,13 +42,11 @@ A Flask-based flight search web application that allows users to search for the 
      - Create a new application to get your API key and secret
      - Use the test environment endpoints provided in the documentation
 
-
 4. Execute the program and visit the IP Address shown on terminal:
     ```bash
     python main.py
     example: * Running on http://192.0.0.1:3002
    ```
-
 
 ## Troubleshooting
 
@@ -90,3 +87,13 @@ A Flask-based flight search web application that allows users to search for the 
 - Ensure you're in the project directory
 - Copy the error and paste on Google or a Gen A.I. tool.
 - Open an issue on GitHub with your error message
+
+## Disclaimer
+***NB: This site is still under development and does not have a completion date***. 
+
+***NB: Numerous improvements can made for it to become a production grade site***. 
+
+***NB: This was constructed to merely display the developers capabilities in terms of software engineering knowledge and skills.***
+
+***Site will be hosted on AWS in the near future to eliminate the need for others 
+to create their own APIs and AWS configurations. A mini-production deployment of sorts***. 

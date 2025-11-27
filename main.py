@@ -56,34 +56,20 @@ def logout():
 def home():
     form = FlightForm()
     user = session.get('user')
+    if 'search_count' not in session:
+        session['search_count'] = 0
+    if form.validate_on_submit() and not user and session['search_count'] < 3:
+        search_for_flight()
+        session['search_count'] += 1
+        return redirect(url_for('results'))
+    if session['search_count'] >= 3:
+        flash("You must be logged in after 3 free searches.", "danger")
 
     if user:
         if form.validate_on_submit():
-            data_manage = DataManager()
-            data_manage.get_iata_codes(city=form.city.data, og_loc=form.origin_location.data)
-
-            fly_search = FlightSearch(data_manage)
-            fly_search.get_flights(dep_date=form.departure_date.data,
-                                   ret_date=form.return_date.data, ad=form.adults.data,
-                                   child=form.children.data, inf=form.infants.data, tc=form.travel_class.data)
-
-            fly_data = FlightData(data_manage, fly_search)
-
-            session['flight_messages'] = fly_data.offer_messages
-            session['structured_flights'] = fly_data.structured_flights
-            session['details'] = {
-                'origin': form.origin_location.data,
-                'destination': form.city.data,
-                'adults': form.adults.data,
-                'children': form.children.data,
-                'infants': form.infants.data,
-                'travel_class': form.travel_class.data,
-                'departure_date': form.departure_date.data.strftime('%Y-%m-%d'),
-                'return_date': form.return_date.data.strftime('%Y-%m-%d')
-            }
+            search_for_flight()
             return redirect(url_for('results'))
-    if request.method == 'POST' and not user:
-        flash("You must be logged in before searching for flights.", "danger")
+
     return render_template("index.html", form=form, user=user, active_page="home")
 
 
@@ -120,6 +106,7 @@ def trip_alert():
         flash("You must be logged in before creating alerts for flights.", "danger")
     return render_template("trip_alert.html", active_page="trip_alert", form=form, user=session.get('user'))
 
+
 @app.route("/pricing")
 def pricing():
     return render_template("pricing.html", active_page="pricing", user=session.get('user'))
@@ -134,6 +121,31 @@ def faq():
 def about():
     return render_template("about.html", active_page="about", user=session.get('user'))
 
+
+def search_for_flight():
+    form = FlightForm()
+    data_manage = DataManager()
+    data_manage.get_iata_codes(city=form.city.data, og_loc=form.origin_location.data)
+
+    fly_search = FlightSearch(data_manage)
+    fly_search.get_flights(dep_date=form.departure_date.data,
+                           ret_date=form.return_date.data, ad=form.adults.data,
+                           child=form.children.data, inf=form.infants.data, tc=form.travel_class.data)
+
+    fly_data = FlightData(data_manage, fly_search)
+
+    session['flight_messages'] = fly_data.offer_messages
+    session['structured_flights'] = fly_data.structured_flights
+    session['details'] = {
+        'origin': form.origin_location.data,
+        'destination': form.city.data,
+        'adults': form.adults.data,
+        'children': form.children.data,
+        'infants': form.infants.data,
+        'travel_class': form.travel_class.data,
+        'departure_date': form.departure_date.data.strftime('%Y-%m-%d'),
+        'return_date': form.return_date.data.strftime('%Y-%m-%d')
+    }
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
