@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 from flask import Flask, request, render_template, redirect, session, url_for, flash
-from aws_dynamodb import table, add_flight
+from aws_dynamodb import add_flight
 from data_manager import DataManager
 from flight_search import FlightSearch
 from flight_data import FlightData
@@ -22,21 +22,17 @@ app.secret_key = os.urandom(24)
 # For Signup and Login
 oauth = OAuth(app)
 oauth.register(
-    name='oidc',
-    authority='https://cognito-idp.eu-north-1.amazonaws.com/eu-north-1_qYg5i82HT',
-    client_id=os.environ["COGNITO_CLIENT_ID"],
-    client_secret=os.environ["COGNITO_CLIENT_SECRET"],
-    server_metadata_url='https://cognito-idp.eu-north-1.amazonaws.com/eu-north-1_qYg5i82HT/.well-known/openid-configuration',
-    client_kwargs={'scope': 'phone openid email'}
+  name='oidc',
+  authority='https://cognito-idp.eu-north-1.amazonaws.com/eu-north-1_DgTib5lie',
+  client_id='6u1l05vd1i2nkluuur0gk5c838',
+  server_metadata_url='https://cognito-idp.eu-north-1.amazonaws.com/eu-north-1_DgTib5lie/.well-known/openid-configuration',
+  client_kwargs={'scope': 'email openid'}
 )
-
-
 ##########
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login")
 def login():
     return oauth.oidc.authorize_redirect('http://localhost:5000/authorize')
-
 
 @app.route('/authorize')
 def authorize():
@@ -89,7 +85,6 @@ def results():
 def trip_alert():
     form = TripAlertForm()
     user = session.get('user')
-
     if user:
         email = user['email']
         if form.validate_on_submit():
