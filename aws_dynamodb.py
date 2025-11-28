@@ -2,7 +2,7 @@ import boto3
 
 dynamodb = boto3.resource('dynamodb')
 
-table = dynamodb.Table('FlightSyte_db')
+table = dynamodb.Table('Flightsyte_DynamoDB')
 
 def add_flight(email, created_at, destination, origin, max_price, adults, children, infants, from_date, to_date):
     table.put_item(
