@@ -19,7 +19,8 @@ A Flask-based flight search web application that allows users to search for the 
 
 ## Requirements
 
-- Python 3.8 or higher
+- Python 3.12 or higher (Specifically as packages are not supported on newer versions yet)
+- Configure a python environment
 - Amadeus API credentials
 
 ## Installation
@@ -27,7 +28,7 @@ A Flask-based flight search web application that allows users to search for the 
 1. Clone the git repository:
     ```bash
     git clone <git-url>
-    cd flight-search-app
+    cd Flight-Search-Webapp
    ```
 
 2. Install required packages:
