@@ -4,11 +4,11 @@ dynamodb = boto3.resource('dynamodb')
 
 table = dynamodb.Table('Flightsyte_DynamoDB')
 
-def add_flight(email, created_at, destination, origin, max_price, adults, children, infants, from_date, to_date):
+def add_flight(email, username, destination, origin, max_price, adults, children, infants, from_date, to_date):
     table.put_item(
         Item={
             'email': email,
-            'createdAt': created_at,
+            'username': username,
             'destination_city': destination,
             'origin_location': origin,
             'max_price': max_price,
@@ -19,3 +19,13 @@ def add_flight(email, created_at, destination, origin, max_price, adults, childr
             'to_date': str(to_date)
         }
     )
+
+def read_flights(email, username):
+    response = table.get_item(
+        Key={
+            'email': email,
+            'username': username
+        }
+    )
+    item = response['Item']
+    return item

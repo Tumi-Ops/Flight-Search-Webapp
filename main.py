@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 from flask import Flask, request, render_template, redirect, session, url_for, flash
-from aws_dynamodb import add_flight
+from aws_dynamodb import add_flight, read_flights
 from data_manager import DataManager
 from flight_search import FlightSearch
 from flight_data import FlightData
@@ -87,9 +87,11 @@ def trip_alert():
     user = session.get('user')
     if user:
         email = user['email']
+        username = user['cognito:username']
+        read_flights(email, username)
         if form.validate_on_submit():
             try:
-                add_flight(email, str(datetime.now()), form.destination_city.data, form.origin_location.data,
+                add_flight(email, username, form.destination_city.data, form.origin_location.data,
                            form.max_price.data, form.adults.data, form.children.data,
                            form.infants.data, str(form.from_date.data), str(form.to_date.data))
                 flash(f"Trip set successfully! You will be notified by email when it is found! "
@@ -99,6 +101,7 @@ def trip_alert():
 
     if request.method == 'POST' and not user:
         flash("You must be logged in before creating alerts for flights.", "danger")
+
     return render_template("trip_alert.html", active_page="trip_alert", form=form, user=session.get('user'))
 
 
